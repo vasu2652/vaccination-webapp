@@ -1,6 +1,6 @@
 export const registerNewUserAPI = async (payload) => {
     try {
-        const response = await fetch("http://localhost:3001/users/signup", {
+        const response = await fetch(`${process.env.REACT_APP_BASEURL}/users/signup`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -32,7 +32,7 @@ export const registerNewUserAPI = async (payload) => {
 }
 export const validateUserLogin = async ({ email, password }) => {
     try {
-        const response = await fetch(`http://localhost:3001/users/login`, {
+        const response = await fetch(`${process.env.REACT_APP_BASEURL}/users/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -64,7 +64,7 @@ export const validateUserLogin = async ({ email, password }) => {
 
 export const fetchBookingsByUserId = async (user_id) => {
     try {
-        const response = await fetch(`http://localhost:3001/users/my-appointments/${user_id}`);
+        const response = await fetch(`${process.env.REACT_APP_BASEURL}/users/my-appointments/${user_id}`);
         const { success, data } = await response.json();
         if (success) {
             return {
@@ -83,7 +83,7 @@ export const fetchBookingsByUserId = async (user_id) => {
 
 export const fetchAllHospitals = async () => {
     try {
-        const response = await fetch('http://localhost:3001/hospital/all-hospitals');
+        const response = await fetch(`${process.env.REACT_APP_BASEURL}/hospital/all-hospitals`);
         const { success, data } = await response.json();
         if (success) {
             return {
@@ -103,7 +103,7 @@ export const fetchAllHospitals = async () => {
 
 export const createNewAppointment = async (payload) => {
     try {
-        const response = await fetch('http://localhost:3001/appointment/', {
+        const response = await fetch(`${process.env.REACT_APP_BASEURL}/appointment/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
